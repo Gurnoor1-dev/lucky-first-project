@@ -73,6 +73,11 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const elements = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      elements.forEach(el => el.classList.add('is-visible'));
+      return;
+    }
     const reveal = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -81,7 +86,7 @@ function App() {
         }
       });
     }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => reveal.observe(el));
+    elements.forEach(el => reveal.observe(el));
     return () => reveal.disconnect();
   }, []);
 
