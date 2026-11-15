@@ -50,6 +50,13 @@ function App() {
 
   useEffect(() => {
     const sections = ['home', 'about', 'work', 'services', 'contact'];
+    if (!('IntersectionObserver' in window)) {
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) setActive(id === 'work' ? 'Work' : id.charAt(0).toUpperCase() + id.slice(1));
+      });
+      return;
+    }
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
