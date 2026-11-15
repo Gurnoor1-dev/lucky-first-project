@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ArrowDown, ArrowRight, ArrowUpRight, Menu, X, Sparkles,
   Layers3, Smartphone, MousePointer2, Code2, Palette, Zap,
